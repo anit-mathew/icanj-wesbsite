@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Events – ICANJ</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.filter-tabs { display:flex; border:1px solid var(--border-light); margin-bottom:0; flex-wrap:wrap; }
+.ftab { font-size:10.5px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; padding:12px 22px; background:transparent; border:none; border-right:1px solid var(--border-light); color:var(--silver); cursor:pointer; transition:all 0.2s; font-family:'Raleway',sans-serif; }
+.ftab:last-child { border-right:none; }
+.ftab:hover, .ftab.active { background:var(--ink); color:var(--parchment); }
+
+.event-list { border:1px solid var(--border-light); border-top:none; }
+.event-entry { display:grid; grid-template-columns:92px 1px 1fr auto; border-bottom:1px solid var(--border-light); cursor:pointer; transition:background 0.22s; position:relative; }
+.event-entry:last-child { border-bottom:none; }
+.event-entry:hover { background:var(--parchment); }
+.event-entry:hover .ee-arrow { color:var(--blue); }
+.ee-cal { padding:28px 16px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; border-right:1px solid var(--border-light); }
+.ee-day { font-family:'EB Garamond',serif; font-size:42px; font-weight:400; color:var(--ink); line-height:1; }
+.ee-month { font-family:'Raleway',sans-serif; font-size:9.5px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--blue); }
+.ee-sep { background:var(--border-light); }
+.ee-info { padding:28px 32px; display:flex; flex-direction:column; justify-content:center; }
+.ee-title { font-family:'EB Garamond',serif; font-size:22px; font-weight:500; color:var(--ink); margin-bottom:6px; line-height:1.2; }
+.ee-body { font-size:14px; font-weight:400; color:var(--ash); line-height:1.72; margin-bottom:12px; }
+.ee-chips { display:flex; gap:14px; flex-wrap:wrap; }
+.ee-chip { font-family:'Raleway',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--silver); }
+.ee-action { padding:28px; display:flex; align-items:center; border-left:1px solid var(--border-light); }
+.ee-arrow { font-family:'EB Garamond',serif; font-size:28px; color:rgba(15,14,12,0.16); transition:all 0.22s; }
+
+.featured-event { background:var(--cathedral); border:1px solid rgba(0,173,239,0.16); padding:52px; display:grid; grid-template-columns:1fr auto; gap:40px; align-items:center; margin-bottom:40px; }
+.fe-tag { font-family:'Raleway',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.28em; text-transform:uppercase; color:var(--blue); margin-bottom:12px; }
+.fe-title { font-family:'EB Garamond',serif; font-size:clamp(28px,4vw,52px); font-weight:400; color:var(--parchment); line-height:1.1; margin-bottom:10px; }
+.fe-date { font-family:'Libre Baskerville',serif; font-size:17px; font-style:italic; color:rgba(242,237,228,0.44); margin-bottom:6px; }
+.fe-body { font-size:14px; color:rgba(242,237,228,0.42); line-height:1.75; max-width:480px; }
+.fe-actions { display:flex; flex-direction:column; gap:12px; flex-shrink:0; }
+
+@media(max-width:1024px){
+  .event-entry { grid-template-columns:72px 1fr; }
+  .ee-action { display:none; }
+  .ee-sep { display:none; }
+  .ee-info { padding:20px 16px; }
+  .ee-cal { padding:20px 12px; }
+  .featured-event { grid-template-columns:1fr; padding:28px 16px; }
+  .fe-actions { flex-direction:column; }
+  .filter-tabs { overflow-x:auto; flex-wrap:nowrap; }
+  .ftab { white-space:nowrap; }
+}
+@media(max-width:480px){
+  .event-entry { grid-template-columns:64px 1fr; }
+  .ee-day { font-size:32px; }
+  .ee-title { font-size:18px; }
+  .ee-chips { gap:6px; }
+  .featured-event { padding:24px 12px; }
+}
+</style>
+</head>
+<body>
+<script src="header.js"></script>
+
+<div class="page-masthead" style="background:var(--cathedral);">
+  <div class="container"><div class="eyebrow">Church Calendar</div><h1>Events</h1><p>Come expecting — the Holy Spirit moves every time we gather. Don't miss what God is doing at ICANJ.</p></div>
+</div>
+
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+
+    <!-- FEATURED -->
+    <div class="featured-event">
+      <div>
+        <div class="fe-tag">🔥 Featured · Children's Ministry</div>
+        <div class="fe-title">Vacation Bible School<br/>2026</div>
+        <div class="fe-date">July 9 – 11, 2026 · 9:00 AM – 12:00 PM</div>
+        <p class="fe-body">Three power-packed days of Scripture, worship, and Holy Spirit-filled fun for children ages 4–12! Watch your kids encounter the living God — songs that stir the heart, Bible truths that take root, and friendships that last a lifetime. Don't leave them out of this blessing!</p>
+      </div>
+      <div class="fe-actions">
+        <a href="connect.html" class="btn btn-blue btn-arrow">Register Now — Seats Are Filling!</a>
+        <a href="ministries.html" class="btn btn-ghost-light">Learn More</a>
+      </div>
+    </div>
+
+    <!-- FILTER -->
+    <div class="filter-tabs">
+      <button class="ftab active" onclick="setFilter(this)">All Events</button>
+      <button class="ftab" onclick="setFilter(this)">Worship</button>
+      <button class="ftab" onclick="setFilter(this)">Children</button>
+      <button class="ftab" onclick="setFilter(this)">Youth</button>
+      <button class="ftab" onclick="setFilter(this)">Special Services</button>
+      <button class="ftab" onclick="setFilter(this)">Community</button>
+    </div>
+
+    <div class="event-list">
+      <div class="event-entry">
+        <div class="ee-cal"><div class="ee-day">9</div><div class="ee-month">Jul 2026</div></div>
+        <div class="ee-sep"></div>
+        <div class="ee-info"><div class="ee-title">🔥 VBS 2026 — Vacation Bible School</div><p class="ee-body">Three Spirit-filled days your children will never forget! Ages 4–12 are invited to experience God's Word come alive through worship, drama, and powerful Bible teaching. Register before spots run out — this blessing is not to be missed!</p><div class="ee-chips"><span class="ee-chip">9:00 AM – 12:00 PM</span><span class="ee-chip">·</span><span class="ee-chip">ICANJ Campus</span><span class="ee-chip">·</span><span class="ee-chip">Children</span></div></div>
+        <div class="ee-action"><a href="connect.html" class="btn btn-blue" style="font-size:10.5px;">Register Now</a></div>
+      </div>
+
+      <div class="event-entry">
+        <div class="ee-cal"><div class="ee-day">18</div><div class="ee-month">Apr 2026</div></div>
+        <div class="ee-sep"></div>
+        <div class="ee-info"><div class="ee-title">✝️ Good Friday — The Cross That Changed Everything</div><p class="ee-body">We will not rush past the cross. Join us for a sacred, Spirit-led evening of prayer, Scripture, and worship as we fix our eyes on the Lamb of God who took away our sin. This is a service that will move you — come ready to encounter the depth of His love.</p><div class="ee-chips"><span class="ee-chip">7:00 PM</span><span class="ee-chip">·</span><span class="ee-chip">Main Sanctuary</span><span class="ee-chip">·</span><span class="ee-chip">Special Service</span></div></div>
+        <div class="ee-action"><span class="ee-arrow">→</span></div>
+      </div>
+      <div class="event-entry">
+        <div class="ee-cal"><div class="ee-day">20</div><div class="ee-month">Apr 2026</div></div>
+        <div class="ee-sep"></div>
+        <div class="ee-info"><div class="ee-title">🎉 Easter Sunday — He Is Risen, Hallelujah!</div><p class="ee-body">Death could not hold Him — and that changes EVERYTHING! Come celebrate the resurrection of Jesus Christ with explosive praise, anointed preaching, and a church family that knows how to shout! Bring your friends, bring your neighbors — nobody should sit out this glorious Sunday!</p><div class="ee-chips"><span class="ee-chip">10:00 AM &amp; 12:30 PM</span><span class="ee-chip">·</span><span class="ee-chip">Main Sanctuary</span><span class="ee-chip">·</span><span class="ee-chip">Special Service</span></div></div>
+        <div class="ee-action"><span class="ee-arrow">→</span></div>
+      </div>
+      <div class="event-entry">
+        <div class="ee-cal"><div class="ee-day">10</div><div class="ee-month">May 2026</div></div>
+        <div class="ee-sep"></div>
+        <div class="ee-info"><div class="ee-title">🌸 Mother's Day — Honouring God's Gift of Mothers</div><p class="ee-body">Proverbs 31 says her worth is far above rubies — and we agree! Join us as we honour the women who prayed over us, believed in us, and never stopped interceding. This will be a beautiful, Spirit-touched Sunday morning filled with gratitude and grace.</p><div class="ee-chips"><span class="ee-chip">10:00 AM</span><span class="ee-chip">·</span><span class="ee-chip">Main Sanctuary</span><span class="ee-chip">·</span><span class="ee-chip">Worship</span></div></div>
+        <div class="ee-action"><span class="ee-arrow">→</span></div>
+      </div>
+      <div class="event-entry">
+        <div class="ee-cal"><div class="ee-day">15</div><div class="ee-month">Jun 2026</div></div>
+        <div class="ee-sep"></div>
+        <div class="ee-info"><div class="ee-title">⛺ Father's Day &amp; Church Family Picnic</div><p class="ee-body">The family that prays together stays together — and eats together! After a powerful Father's Day service honouring the men of God in our midst, we're taking the celebration outside for food, fellowship, and fun for every age. Come hungry in every way!</p><div class="ee-chips"><span class="ee-chip">After Morning Service</span><span class="ee-chip">·</span><span class="ee-chip">ICANJ Grounds</span><span class="ee-chip">·</span><span class="ee-chip">Community</span></div></div>
+        <div class="ee-action"><span class="ee-arrow">→</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="verse-band">
+  <blockquote><p>"Do not leave Jerusalem, but wait for the gift my Father promised —<br/>you will receive power when the Holy Spirit comes on you."</p><cite>Acts 1 : 4 – 8</cite></blockquote>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-upper">
+    <div>
+      <img src="https://icanj.org/wp-content/uploads/2022/09/LOGO-transparent3_white.png" style="height:46px;opacity:0.65;" alt="ICANJ" onerror="this.style.display='none'"/>
+      <p class="footer-brand-verse">"A bruised reed he will not break, and a smouldering wick he will not snuff out." — Isaiah 42:3</p>
+      <div class="footer-social"><a href="https://www.facebook.com/ICANJ/" target="_blank" class="fsoc-btn">FB</a><a href="https://www.instagram.com/ica.nj/" target="_blank" class="fsoc-btn">IG</a><a href="https://www.youtube.com/@ICANJ" target="_blank" class="fsoc-btn">YT</a></div>
+    </div>
+    <div class="footer-nav-cols">
+      <div class="footer-col"><h5>Navigate</h5><ul><li><a href="index.html">Home</a></li><li><a href="visit.html">Plan Your Visit</a></li><li><a href="sermons.html">Sermons</a></li><li><a href="about.html">About Us</a></li></ul></div>
+      <div class="footer-col"><h5>Ministries</h5><ul><li><a href="ministries.html">Children's Ministry</a></li><li><a href="ministries.html">Youth Ministry</a></li><li><a href="ministries.html">Women's Ministry</a></li><li><a href="ministries.html">Men's Fellowship</a></li></ul></div>
+      <div class="footer-col"><h5>Resources</h5><ul><li><a href="connect.html">Contact Us</a></li><li><a href="connect.html">Prayer Requests</a></li><li><a href="https://icanj.churchcenter.com/giving" target="_blank">Give Online</a></li><li><a href="events.html">VBS 2026</a></li></ul></div>
+    </div>
+  </div>
+  <div class="footer-lower"><p>© 2026 India Christian Assembly of New Jersey. All Rights Reserved.</p><p>Soli Deo Gloria</p></div>
+</footer>
+<script>function setFilter(btn){document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}</script>
+<script>
+function toggleMobileNav() {
+  const nav = document.getElementById('mobileNav');
+  const btn = document.getElementById('menuToggle');
+  const isOpen = nav.classList.contains('open');
+  if (isOpen) { closeMobileNav(); } else { openMobileNav(); }
+}
+function openMobileNav() {
+  document.getElementById('mobileNav').classList.add('open');
+  document.getElementById('menuToggle').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileNav() {
+  document.getElementById('mobileNav').classList.remove('open');
+  document.getElementById('menuToggle').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMobileNav(); });
+</script>
+</body>
+</html>

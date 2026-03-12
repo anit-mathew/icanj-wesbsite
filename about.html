@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>About Us – ICANJ</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.mission-split { display:grid; grid-template-columns:1fr 1fr; gap:88px; align-items:center; }
+.mission-photo { background:var(--parchment); border:1px solid var(--border-light); aspect-ratio:4/5; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.mission-photo::before { content:'✝'; font-family:'EB Garamond',serif; font-size:160px; color:rgba(15,14,12,0.04); }
+.mission-photo-inset { position:absolute; inset:20px; border:1px solid rgba(0,173,239,0.14); }
+.value-list { margin-top:40px; border-top:1px solid var(--border-light); }
+.value-row { padding:24px 0; border-bottom:1px solid var(--border-light); display:flex; gap:24px; align-items:flex-start; }
+.vr-key { font-family:'EB Garamond',serif; font-size:14px; font-style:italic; color:var(--blue); letter-spacing:0.1em; min-width:88px; padding-top:3px; }
+.vr-title { font-family:'EB Garamond',serif; font-size:20px; font-weight:500; color:var(--ink); margin-bottom:5px; }
+.vr-body { font-size:14px; font-weight:400; color:var(--ash); line-height:1.78; }
+
+.beliefs-two-col { display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--border-light); margin-top:48px; }
+.belief-item { padding:30px 32px; border-right:1px solid var(--border-light); border-bottom:1px solid var(--border-light); display:flex; gap:16px; transition:background 0.22s; }
+.belief-item:nth-child(2n) { border-right:none; }
+.belief-item:nth-last-child(-n+2) { border-bottom:none; }
+.belief-item:hover { background:var(--parchment); }
+.bi-dot { width:8px; height:8px; border-radius:50%; background:var(--blue); flex-shrink:0; margin-top:8px; }
+.bi-title { font-family:'EB Garamond',serif; font-size:18px; font-weight:500; color:var(--ink); margin-bottom:5px; }
+.bi-body { font-size:13.5px; font-weight:400; color:var(--ash); line-height:1.78; }
+
+.leader-grid { display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--border-light); margin-top:52px; }
+.leader-tile { padding:40px 24px; border-right:1px solid var(--border-light); text-align:center; transition:background 0.22s; }
+.leader-tile:last-child { border-right:none; }
+.leader-tile:hover { background:var(--cream); }
+.leader-portrait { width:96px; height:96px; border-radius:50%; background:var(--charcoal); margin:0 auto 18px; display:flex; align-items:center; justify-content:center; font-family:'EB Garamond',serif; font-size:32px; color:rgba(242,237,228,0.3); border:2px solid var(--border-mid); }
+.leader-name { font-family:'EB Garamond',serif; font-size:19px; font-weight:500; color:var(--ink); margin-bottom:4px; }
+.leader-role { font-family:'Raleway',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--blue); }
+
+.timeline { margin-top:52px; position:relative; padding-left:140px; }
+.timeline::before { content:''; position:absolute; left:108px; top:0; bottom:0; width:1px; background:var(--border-mid); }
+.tl-entry { position:relative; margin-bottom:48px; }
+.tl-year { position:absolute; left:-140px; font-family:'EB Garamond',serif; font-size:26px; font-weight:400; color:rgba(15,14,12,0.28); top:0; width:80px; text-align:right; }
+.tl-dot { position:absolute; left:-34px; top:6px; width:11px; height:11px; border-radius:50%; background:var(--blue); z-index:1; }
+.tl-title { font-family:'EB Garamond',serif; font-size:22px; font-weight:500; color:var(--ink); margin-bottom:6px; }
+.tl-body { font-size:14px; font-weight:400; color:var(--ash); line-height:1.8; }
+
+@media(max-width:1024px){
+  .mission-split { grid-template-columns:1fr; gap:28px; }
+  .mission-photo { display:none; }
+  .beliefs-two-col { grid-template-columns:1fr; }
+  .belief-item { border-right:none; }
+  .belief-item:nth-last-child(-n+2) { border-bottom:1px solid var(--border-light); }
+  .belief-item:last-child { border-bottom:none; }
+  .leader-grid { grid-template-columns:1fr 1fr; }
+  .leader-tile:nth-child(2n) { border-right:none; }
+  .leader-tile:nth-child(n+3) { border-top:1px solid var(--border-light); }
+  .timeline { padding-left:0; }
+  .timeline::before { display:none; }
+  .tl-year { position:static; font-size:20px; color:var(--blue); margin-bottom:4px; }
+  .tl-dot { display:none; }
+}
+@media(max-width:480px){
+  .leader-grid { grid-template-columns:1fr; }
+  .leader-tile { border-right:none; border-bottom:1px solid var(--border-light); }
+  .leader-tile:last-child { border-bottom:none; }
+  .value-row { flex-direction:column; gap:8px; }
+  .vr-key { min-width:unset; padding-top:0; }
+}
+</style>
+</head>
+<body>
+<script src="header.js"></script>
+
+<div class="page-masthead" style="background:var(--cathedral);">
+  <div class="container"><div class="eyebrow">Who We Are</div><h1>About ICANJ</h1><p>A congregation shaped by Scripture, rooted in community, and open to all.</p></div>
+</div>
+
+<!-- MISSION -->
+<section class="section" style="background:#fff;">
+  <div class="container">
+    <div class="mission-split">
+      <div class="mission-photo"><div class="mission-photo-inset"></div></div>
+      <div>
+        <div class="eyebrow">Our Purpose</div>
+        <h2 class="section-title">Our Mission</h2>
+        <p class="section-body" style="margin-bottom:16px;">India Christian Assembly of New Jersey exists to glorify God through Spirit-filled worship, expository preaching, and compassionate community — welcoming all people into a life-changing relationship with Jesus Christ.</p>
+        <p class="section-body">We are a multigenerational, multicultural church that honours our Indian heritage while embracing our call to be a light in New Jersey and the nations.</p>
+        <div class="value-list">
+          <div class="value-row"><div class="vr-key">Scripture</div><div><div class="vr-title">Rooted in the Word</div><p class="vr-body">Every sermon, decision, and programme is measured against Scripture alone.</p></div></div>
+          <div class="value-row"><div class="vr-key">Worship</div><div><div class="vr-title">Gathered to Glorify</div><p class="vr-body">We come to encounter God — not to observe a religious performance.</p></div></div>
+          <div class="value-row"><div class="vr-key">Community</div><div><div class="vr-title">Better Together</div><p class="vr-body">Authentic relationships built on love, accountability, and mutual encouragement in Christ.</p></div></div>
+          <div class="value-row"><div class="vr-key">Grace</div><div><div class="vr-title">Welcome to All</div><p class="vr-body">Every person who walks through our doors is made in the image of God and deserves dignity.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BELIEFS -->
+<section class="section" style="background:var(--parchment);">
+  <div class="container">
+    <div class="eyebrow">Doctrine</div>
+    <h2 class="section-title">What We Believe</h2>
+    <div class="beliefs-two-col">
+      <div class="belief-item"><div class="bi-dot"></div><div><div class="bi-title">The Bible</div><p class="bi-body">We believe the entire Bible is the inspired, inerrant Word of God and the supreme authority for faith and life.</p></div></div>
+      <div class="belief-item"><div class="bi-dot"></div><div><div class="bi-title">The Trinity</div><p class="bi-body">We believe in one God eternally existing in three persons: Father, Son, and Holy Spirit — co-equal and co-eternal.</p></div></div>
+      <div class="belief-item"><div class="bi-dot"></div><div><div class="bi-title">Jesus Christ</div><p class="bi-body">We believe in the full divinity and humanity of Jesus, His virgin birth, sinless life, atoning death, and bodily resurrection.</p></div></div>
+      <div class="belief-item"><div class="bi-dot"></div><div><div class="bi-title">Salvation</div><p class="bi-body">We believe salvation is by grace alone, through faith alone, in Christ alone — not by works, but as a free gift from God.</p></div></div>
+      <div class="belief-item"><div class="bi-dot"></div><div><div class="bi-title">The Holy Spirit</div><p class="bi-body">We believe the Holy Spirit indwells every believer, empowers the Church, and produces the fruit and gifts described in Scripture.</p></div></div>
+      <div class="belief-item"><div class="bi-dot"></div><div><div class="bi-title">The Church</div><p class="bi-body">We believe the Church is the body of Christ on earth — called to worship, discipleship, fellowship, ministry, and mission.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="verse-band">
+  <blockquote><p>"For I am not ashamed of the gospel, for it is the power of God for salvation to everyone who believes."</p><cite>Romans 1 : 16</cite></blockquote>
+</div>
+
+<!-- LEADERSHIP -->
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div class="eyebrow">Our People</div>
+    <h2 class="section-title">Church Leadership</h2>
+    <div class="leader-grid">
+      <div class="leader-tile"><div class="leader-portrait">—</div><div class="leader-name">Pastor Name</div><div class="leader-role">Senior Pastor</div></div>
+      <div class="leader-tile"><div class="leader-portrait">—</div><div class="leader-name">Pastor Name</div><div class="leader-role">Associate Pastor</div></div>
+      <div class="leader-tile"><div class="leader-portrait">—</div><div class="leader-name">Leader Name</div><div class="leader-role">Worship Leader</div></div>
+      <div class="leader-tile"><div class="leader-portrait">—</div><div class="leader-name">Leader Name</div><div class="leader-role">Youth Ministry</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section class="section" style="background:#fff;">
+  <div class="container" style="max-width:860px;">
+    <div class="eyebrow">Our History</div>
+    <h2 class="section-title">Our Story</h2>
+    <div class="timeline">
+      <div class="tl-entry"><div class="tl-year">1998</div><div class="tl-dot"></div><div class="tl-title">Foundations Laid</div><p class="tl-body">A small group of Indian Christian families in Hackensack began gathering in homes for worship and prayer, planting the seed of what would become ICANJ.</p></div>
+      <div class="tl-entry"><div class="tl-year">2003</div><div class="tl-dot"></div><div class="tl-title">First Permanent Home</div><p class="tl-body">ICANJ was formally established and moved into its first dedicated meeting space in northern New Jersey, marking a new chapter of growth.</p></div>
+      <div class="tl-entry"><div class="tl-year">2010</div><div class="tl-dot"></div><div class="tl-title">Growth &amp; Expansion</div><p class="tl-body">Membership grew substantially. Dedicated children's and youth ministries were launched to serve every generation with intentional discipleship.</p></div>
+      <div class="tl-entry"><div class="tl-year">2024</div><div class="tl-dot"></div><div class="tl-title">Sermons Go Online</div><p class="tl-body">Weekly Bible study teaching became available on Spotify and Apple Podcasts, extending our reach well beyond the walls of our Hackensack campus.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-upper">
+    <div>
+      <img src="https://icanj.org/wp-content/uploads/2022/09/LOGO-transparent3_white.png" style="height:46px;opacity:0.65;" alt="ICANJ" onerror="this.style.display='none'"/>
+      <p class="footer-brand-verse">"A bruised reed he will not break, and a smouldering wick he will not snuff out." — Isaiah 42:3</p>
+      <div class="footer-social"><a href="https://www.facebook.com/ICANJ/" target="_blank" class="fsoc-btn">FB</a><a href="https://www.instagram.com/ica.nj/" target="_blank" class="fsoc-btn">IG</a><a href="https://www.youtube.com/@ICANJ" target="_blank" class="fsoc-btn">YT</a></div>
+    </div>
+    <div class="footer-nav-cols">
+      <div class="footer-col"><h5>Navigate</h5><ul><li><a href="index.html">Home</a></li><li><a href="visit.html">Plan Your Visit</a></li><li><a href="sermons.html">Sermons</a></li><li><a href="about.html">About Us</a></li></ul></div>
+      <div class="footer-col"><h5>Ministries</h5><ul><li><a href="ministries.html">Children's Ministry</a></li><li><a href="ministries.html">Youth Ministry</a></li><li><a href="ministries.html">Women's Ministry</a></li><li><a href="ministries.html">Men's Fellowship</a></li></ul></div>
+      <div class="footer-col"><h5>Resources</h5><ul><li><a href="connect.html">Contact Us</a></li><li><a href="connect.html">Prayer Requests</a></li><li><a href="https://icanj.churchcenter.com/giving" target="_blank">Give Online</a></li><li><a href="events.html">VBS 2026</a></li></ul></div>
+    </div>
+  </div>
+  <div class="footer-lower"><p>© 2026 India Christian Assembly of New Jersey. All Rights Reserved.</p><p>Soli Deo Gloria</p></div>
+</footer>
+<script>
+function toggleMobileNav() {
+  const nav = document.getElementById('mobileNav');
+  const btn = document.getElementById('menuToggle');
+  const isOpen = nav.classList.contains('open');
+  if (isOpen) { closeMobileNav(); } else { openMobileNav(); }
+}
+function openMobileNav() {
+  document.getElementById('mobileNav').classList.add('open');
+  document.getElementById('menuToggle').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileNav() {
+  document.getElementById('mobileNav').classList.remove('open');
+  document.getElementById('menuToggle').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMobileNav(); });
+</script>
+</body>
+</html>

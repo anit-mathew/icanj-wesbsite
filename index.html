@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>ICANJ – India Christian Assembly, New Jersey</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+/* ── HERO ── */
+.hero {
+  background:var(--cathedral);
+  min-height:calc(100vh - 106px);
+  display:grid; grid-template-columns:1fr 1fr;
+  position:relative; overflow:hidden;
+}
+/* ── VIDEO BACKGROUND ── */
+.hero-video-bg {
+  position:absolute; inset:0; width:100%; height:100%;
+  pointer-events:none; z-index:0;
+}
+.hero-video-bg iframe {
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%, -50%);
+  width:177.78vh;  /* 16:9 aspect ratio: height * (16/9) */
+  min-width:100%;
+  height:56.25vw;  /* 16:9 aspect ratio: width * (9/16) */
+  min-height:100%;
+  opacity:0.38;
+  filter:grayscale(15%) brightness(0.85);
+  pointer-events:none;
+}
+.hero-video-overlay {
+  position:absolute; inset:0; z-index:1;
+  background: linear-gradient(
+    105deg,
+    rgba(26,22,40,0.72) 0%,
+    rgba(26,22,40,0.52) 50%,
+    rgba(26,22,40,0.32) 100%
+  );
+}
+.hero-texture { z-index:2; }
+.hero-glow { z-index:2; }
+.hero-left { z-index:3; }
+.hero-right { z-index:3; }
+.hero-texture {
+  position:absolute; inset:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.016'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-glow {
+  position:absolute; top:0; right:0; bottom:0; width:50%;
+  background:radial-gradient(ellipse 70% 60% at 70% 40%,rgba(0,173,239,0.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-left {
+  padding:108px 64px 80px 52px;
+  display:flex; flex-direction:column; justify-content:center;
+  position:relative; z-index:2;
+  border-right:1px solid rgba(255,255,255,0.05);
+  animation:heroIn 1s ease both;
+}
+@keyframes heroIn { from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);} }
+.hero-kicker { display:flex; align-items:center; gap:14px; margin-bottom:32px; }
+.hero-kicker-line { width:40px; height:1px; background:var(--blue); }
+.hero-kicker span { font-size:10.5px; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:var(--blue); }
+.hero h1 {
+  font-family:'EB Garamond',serif;
+  font-size:clamp(50px,6.5vw,88px); font-weight:400;
+  color:var(--parchment); line-height:1.05;
+  letter-spacing:-0.02em; margin-bottom:26px;
+}
+.hero h1 em { font-style:italic; color:rgba(242,237,228,0.55); }
+.hero-desc {
+  font-family:'Libre Baskerville',serif;
+  font-size:16px; font-style:italic; font-weight:400;
+  color:rgba(242,237,228,0.42); line-height:1.82;
+  max-width:420px; margin-bottom:48px;
+}
+.hero-ctas { display:flex; gap:16px; flex-wrap:wrap; }
+.hero-scroll {
+  position:absolute; bottom:40px; left:52px;
+  display:flex; align-items:center; gap:12px;
+  color:rgba(242,237,228,0.18);
+  animation:scrollFade 3s ease infinite;
+}
+@keyframes scrollFade {0%,100%{opacity:0.4;}50%{opacity:0.9;}}
+.hero-scroll-bar { width:40px; height:1px; background:rgba(242,237,228,0.15); }
+.hero-scroll span { font-size:10px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; }
+
+.hero-right {
+  padding:80px 52px 80px 64px;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  position:relative; z-index:2;
+  animation:heroIn 1s 0.18s ease both;
+}
+.verse-pull {
+  border-left:2px solid rgba(0,173,239,0.38);
+  padding:22px 28px; margin-bottom:44px;
+}
+.verse-pull p {
+  font-family:'EB Garamond',serif;
+  font-size:clamp(18px,2.2vw,26px); font-style:italic;
+  color:rgba(242,237,228,0.58); line-height:1.65; margin-bottom:12px;
+}
+.verse-pull cite {
+  font-family:'Raleway',sans-serif; font-size:10.5px; font-weight:700;
+  letter-spacing:0.22em; text-transform:uppercase;
+  color:var(--blue); font-style:normal;
+}
+.service-stack { display:flex; flex-direction:column; gap:1px; }
+.ss-row {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 20px;
+  background:rgba(255,255,255,0.028);
+  border:1px solid rgba(255,255,255,0.055);
+  transition:background 0.22s; cursor:pointer;
+}
+.ss-row:hover { background:rgba(0,173,239,0.07); border-color:rgba(0,173,239,0.15); }
+.ss-left { display:flex; align-items:baseline; gap:12px; }
+.ss-day { font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,228,0.28); min-width:64px; }
+.ss-name { font-family:'EB Garamond',serif; font-size:18px; color:rgba(242,237,228,0.78); }
+.ss-time { font-family:'Raleway',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.1em; color:var(--blue); }
+
+/* ── INTRO TWIN COLS ── */
+.twin-intro {
+  background:var(--parchment);
+  border-bottom:1px solid var(--border-light);
+}
+.twin-intro-inner {
+  max-width:1240px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 1px 1fr;
+  padding:80px 52px;
+}
+.twin-col { padding:0 60px; }
+.twin-col:first-child { padding-left:0; }
+.twin-col:last-child { padding-right:0; }
+.twin-sep { background:var(--border-light); }
+
+/* ── STATS ── */
+.stats-band { background:var(--ink); }
+.stats-inner {
+  max-width:1240px; margin:0 auto;
+  display:grid; grid-template-columns:repeat(4,1fr);
+  border-left:1px solid rgba(255,255,255,0.05);
+}
+.stat-cell {
+  padding:52px 40px;
+  border-right:1px solid rgba(255,255,255,0.05);
+}
+.stat-num {
+  font-family:'EB Garamond',serif;
+  font-size:58px; font-weight:400;
+  color:var(--parchment); line-height:1; margin-bottom:9px;
+}
+.stat-num em { font-style:italic; color:var(--blue); }
+.stat-label { font-family:'Raleway',sans-serif; font-size:10.5px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:rgba(242,237,228,0.3); }
+
+/* ── BELIEFS GRID ── */
+.beliefs-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--border-light); margin-top:52px;
+}
+.belief-cell {
+  padding:40px 36px;
+  border-right:1px solid var(--border-light);
+  border-bottom:1px solid var(--border-light);
+  transition:background 0.25s;
+}
+.belief-cell:nth-child(3n) { border-right:none; }
+.belief-cell:nth-child(n+4) { border-bottom:none; }
+.belief-cell:hover { background:var(--parchment); }
+.belief-numeral {
+  font-family:'EB Garamond',serif; font-size:52px; font-weight:400;
+  color:rgba(15,14,12,0.055); line-height:1; margin-bottom:14px;
+}
+.belief-title { font-family:'EB Garamond',serif; font-size:22px; font-weight:500; color:var(--ink); margin-bottom:10px; }
+.belief-body { font-size:14px; font-weight:400; color:var(--ash); line-height:1.82; }
+
+/* ── CONNECT LIST ── */
+.connect-split {
+  display:grid; grid-template-columns:340px 1fr;
+  gap:80px; align-items:start;
+}
+.connect-sidebar { position:sticky; top:96px; }
+.connect-list { border-top:1px solid var(--border-light); }
+.connect-row {
+  padding:30px 0;
+  border-bottom:1px solid var(--border-light);
+  display:grid; grid-template-columns:1fr auto;
+  gap:20px; align-items:center;
+  cursor:pointer; transition:padding-left 0.25s;
+}
+.connect-row:hover { padding-left:8px; }
+.connect-row:hover .cr-arrow { color:var(--blue); transform:translateX(4px); }
+.cr-title { font-family:'EB Garamond',serif; font-size:22px; font-weight:500; color:var(--ink); margin-bottom:5px; }
+.cr-body { font-size:13.5px; font-weight:400; color:var(--ash); line-height:1.72; }
+.cr-arrow { font-family:'EB Garamond',serif; font-size:30px; color:rgba(15,14,12,0.18); transition:all 0.25s; }
+
+/* ── SERMON PREVIEW ── */
+.sermon-preview-bg { background:var(--parchment); }
+.sermon-list { border-top:1px solid var(--border-mid); margin-top:48px; }
+.sermon-row {
+  display:grid; grid-template-columns:72px 1fr auto;
+  gap:28px; align-items:center;
+  padding:26px 0; border-bottom:1px solid var(--border-light);
+  cursor:pointer; transition:padding-left 0.25s;
+}
+.sermon-row:hover { padding-left:8px; }
+.sermon-row:hover .sr-num { color:var(--blue); }
+.sr-num {
+  font-family:'EB Garamond',serif; font-size:44px; font-weight:400;
+  color:rgba(15,14,12,0.08); line-height:1; text-align:center;
+  transition:color 0.25s;
+}
+.sr-title { font-family:'EB Garamond',serif; font-size:21px; font-weight:500; color:var(--ink); margin-bottom:4px; }
+.sr-sub { font-size:13px; font-weight:400; color:var(--silver); }
+.sr-meta { text-align:right; }
+.sr-date { font-family:'Raleway',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.1em; color:var(--silver); display:block; margin-bottom:8px; }
+.podcast-strip {
+  display:flex; align-items:center; gap:14px;
+  margin-top:36px; padding-top:32px; border-top:1px solid var(--border-light);
+  flex-wrap:wrap;
+}
+.podcast-strip p { font-family:'EB Garamond',serif; font-size:17px; color:var(--stone); flex:1; min-width:200px; }
+
+/* ── EVENTS PREVIEW ── */
+.events-preview-inner {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:0; border:1px solid var(--border-light); margin-top:48px;
+}
+.ep-event {
+  padding:32px 36px; border-right:1px solid var(--border-light);
+  border-bottom:1px solid var(--border-light);
+  cursor:pointer; transition:background 0.22s;
+}
+.ep-event:nth-child(2n) { border-right:none; }
+.ep-event:nth-last-child(-n+2) { border-bottom:none; }
+.ep-event:hover { background:var(--parchment); }
+.ep-date { font-family:'Raleway',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--blue); margin-bottom:8px; }
+.ep-title { font-family:'EB Garamond',serif; font-size:22px; font-weight:500; color:var(--ink); margin-bottom:8px; }
+.ep-body { font-size:14px; font-weight:400; color:var(--ash); line-height:1.75; }
+
+@media (max-width:1024px){
+  .hero { grid-template-columns:1fr; min-height:auto; }
+  .hero-right { padding:36px 16px 52px; border-top:1px solid rgba(255,255,255,0.05); }
+  .hero-left { padding:72px 16px 36px; }
+  .hero-scroll { display:none; }
+  .hero-ctas { flex-direction:column; gap:12px; }
+  .hero-ctas .btn { justify-content:center; }
+  .twin-intro-inner { grid-template-columns:1fr; padding:44px 16px; }
+  .twin-col { padding:28px 0; border-bottom:1px solid var(--border-light); }
+  .twin-col:last-child { border-bottom:none; }
+  .twin-sep { display:none; }
+  .stats-inner { grid-template-columns:repeat(2,1fr); }
+  .stat-cell { padding:36px 24px; }
+  .beliefs-grid { grid-template-columns:1fr; }
+  .belief-cell { border-right:none; }
+  .belief-cell:nth-child(n+4) { border-bottom:1px solid var(--border-light); }
+  .belief-cell:last-child { border-bottom:none; }
+  .connect-split { grid-template-columns:1fr; gap:28px; }
+  .connect-sidebar { position:static; }
+  .sermon-row { grid-template-columns:52px 1fr; }
+  .sr-meta { display:none; }
+  .events-preview-inner { grid-template-columns:1fr; }
+  .ep-event { border-right:none; }
+  .ep-event:nth-last-child(-n+2) { border-bottom:1px solid var(--border-light); }
+  .ep-event:last-child { border-bottom:none; }
+  .podcast-strip { flex-direction:column; align-items:flex-start; gap:10px; }
+  .podcast-strip .btn { width:100%; justify-content:center; }
+}
+@media (max-width:480px){
+  .hero-left { padding:56px 12px 28px; }
+  .hero-right { padding:28px 12px 44px; }
+  .twin-intro-inner { padding:36px 12px; }
+  .stat-cell { padding:28px 16px; }
+  .stat-num { font-size:44px; }
+  .service-stack .ss-row { padding:14px 12px; }
+}
+</style>
+</head>
+<body>
+
+<script src="header.js"></script>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Video Background -->
+  <div class="hero-video-bg">
+    <iframe src="https://www.youtube.com/embed/J9h4VWP13VI?autoplay=1&mute=1&loop=1&playlist=J9h4VWP13VI&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&playsinline=1&start=8"
+            frameborder="0" allow="autoplay; encrypted-media"
+            allowfullscreen title="Hero background video">
+    </iframe>
+  </div>
+  <div class="hero-video-overlay"></div>
+  <div class="hero-texture"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-left">
+    <div class="hero-kicker">
+      <div class="hero-kicker-line"></div>
+      <span>Hackensack, New Jersey</span>
+    </div>
+    <h1>Where You Are<br/><em>Always Welcome</em></h1>
+    <p class="hero-desc">A congregation rooted in Scripture, devoted to worship, and committed to every soul that walks through our doors.</p>
+    <div class="hero-ctas">
+      <a href="visit.html" class="btn btn-blue btn-arrow">Plan Your Visit</a>
+      <a href="sermons.html" class="btn btn-ghost-light">Watch Sermons</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-bar"></div>
+      <span>Scroll</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="verse-pull">
+      <p>"For where two or three are gathered in my name, there am I among them."</p>
+      <cite>Matthew 18 : 20</cite>
+    </div>
+    <div class="service-stack">
+      <a href="visit.html" class="ss-row">
+        <div class="ss-left"><span class="ss-day">Sunday</span><span class="ss-name">Morning Worship</span></div>
+        <span class="ss-time">10:00 AM</span>
+      </a>
+      <a href="visit.html" class="ss-row">
+        <div class="ss-left"><span class="ss-day">Sunday</span><span class="ss-name">Malayalam Service</span></div>
+        <span class="ss-time">12:30 PM</span>
+      </a>
+      <a href="visit.html" class="ss-row">
+        <div class="ss-left"><span class="ss-day">Wednesday</span><span class="ss-name">Bible Study</span></div>
+        <span class="ss-time">7:30 PM</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TWIN INTRO -->
+<div class="twin-intro">
+  <div class="twin-intro-inner">
+    <div class="twin-col">
+      <div class="eyebrow">Our Mission</div>
+      <h2 style="font-family:'EB Garamond',serif;font-size:clamp(24px,3vw,38px);font-weight:500;color:var(--ink);line-height:1.2;margin-bottom:18px;">To glorify God through Word, worship, and community</h2>
+      <p class="section-body">ICANJ exists to proclaim the gospel, make disciples, and serve the city of Hackensack — welcoming every person into a life-transforming relationship with Jesus Christ.</p>
+    </div>
+    <div class="twin-sep"></div>
+    <div class="twin-col">
+      <div class="eyebrow">Who We Are</div>
+      <p class="section-body" style="margin-bottom:22px;">We are a multigenerational Indian-American church that honours the richness of our heritage while embracing our calling to be a light in New Jersey. Founded over two decades ago, ICANJ has grown into a vibrant family spanning all ages and backgrounds.</p>
+      <a href="about.html" class="btn btn-ghost-dark btn-arrow">Our Story</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-band">
+  <div class="stats-inner">
+    <div class="stat-cell"><div class="stat-num">25<em>+</em></div><div class="stat-label">Years of Ministry</div></div>
+    <div class="stat-cell"><div class="stat-num">3<em>×</em></div><div class="stat-label">Weekly Services</div></div>
+    <div class="stat-cell"><div class="stat-num">6</div><div class="stat-label">Active Ministries</div></div>
+    <div class="stat-cell"><div class="stat-num"><em>∞</em></div><div class="stat-label">Grace Available</div></div>
+  </div>
+</div>
+
+<!-- WHAT WE BELIEVE -->
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div class="eyebrow">Doctrine</div>
+    <h2 class="section-title" style="max-width:480px;">What We Believe</h2>
+    <div class="beliefs-grid">
+      <div class="belief-cell"><div class="belief-numeral">I</div><div class="belief-title">Scripture</div><p class="belief-body">The Bible is the inspired, inerrant Word of God — the supreme authority for faith, doctrine, and all of life.</p></div>
+      <div class="belief-cell"><div class="belief-numeral">II</div><div class="belief-title">The Trinity</div><p class="belief-body">One God, eternally existing in three co-equal persons: Father, Son, and Holy Spirit.</p></div>
+      <div class="belief-cell"><div class="belief-numeral">III</div><div class="belief-title">Jesus Christ</div><p class="belief-body">Fully God and fully man — born of a virgin, lived without sin, died in our place, and rose bodily from the dead.</p></div>
+      <div class="belief-cell"><div class="belief-numeral">IV</div><div class="belief-title">Salvation</div><p class="belief-body">By grace alone, through faith alone, in Christ alone. Not earned by works, but freely given by God.</p></div>
+      <div class="belief-cell"><div class="belief-numeral">V</div><div class="belief-title">The Holy Spirit</div><p class="belief-body">The Spirit indwells every believer, produces the fruit described in Scripture, and empowers the Church for mission.</p></div>
+      <div class="belief-cell"><div class="belief-numeral">VI</div><div class="belief-title">The Church</div><p class="belief-body">The body of Christ on earth — called to worship, discipleship, fellowship, ministry, and proclamation to all nations.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VERSE -->
+<div class="verse-band">
+  <blockquote>
+    <p>"I am the way, and the truth, and the life.<br/>No one comes to the Father except through me."</p>
+    <cite>John 14 : 6</cite>
+  </blockquote>
+</div>
+
+<!-- CONNECT -->
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div class="connect-split">
+      <div class="connect-sidebar">
+        <div class="eyebrow">Get Involved</div>
+        <h2 class="section-title">Connect With Our Church</h2>
+        <p class="section-body">Every meaningful journey begins with a single step. Here is how to take yours at ICANJ.</p>
+      </div>
+      <div class="connect-list">
+        <a href="visit.html" class="connect-row">
+          <div><div class="cr-title">Plan Your Visit</div><p class="cr-body">Service times, what to expect on Sunday, children's ministry, parking, and directions.</p></div>
+          <div class="cr-arrow">→</div>
+        </a>
+        <a href="https://icanj.churchcenter.com/giving" target="_blank" class="connect-row">
+          <div><div class="cr-title">Give Online</div><p class="cr-body">Your generosity sustains our ministries, community outreach, and missions in New Jersey and beyond.</p></div>
+          <div class="cr-arrow">→</div>
+        </a>
+        <a href="ministries.html" class="connect-row">
+          <div><div class="cr-title">Join a Ministry</div><p class="cr-body">Children's ministry, youth, worship team, men's and women's fellowships — find where your gifts are needed.</p></div>
+          <div class="cr-arrow">→</div>
+        </a>
+        <a href="connect.html" class="connect-row">
+          <div><div class="cr-title">Submit a Prayer Request</div><p class="cr-body">We believe in the power of corporate prayer. Share your request and our pastoral team will lift you up.</p></div>
+          <div class="cr-arrow">→</div>
+        </a>
+        <a href="https://icanj.churchcenter.com/home" target="_blank" class="connect-row">
+          <div><div class="cr-title">Church Center App</div><p class="cr-body">Manage your profile, register for events, and stay connected with the ICANJ community.</p></div>
+          <div class="cr-arrow">→</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="site-footer">
+  <div class="footer-upper">
+    <div>
+      <img src="LOGO_transparent2.png" style="height:52px;mix-blend-mode:lighten;opacity:0.85;" alt="ICANJ" onerror="this.style.display='none'"/>
+      <p class="footer-brand-verse">"A bruised reed he will not break, and a smouldering wick he will not snuff out." — Isaiah 42:3</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/ICANJ/" target="_blank" class="fsoc-btn">FB</a>
+        <a href="https://www.instagram.com/ica.nj/" target="_blank" class="fsoc-btn">IG</a>
+        <a href="https://www.youtube.com/@ICANJ" target="_blank" class="fsoc-btn">YT</a>
+      </div>
+    </div>
+    <div class="footer-nav-cols">
+      <div class="footer-col"><h5>Navigate</h5><ul><li><a href="index.html">Home</a></li><li><a href="visit.html">Plan Your Visit</a></li><li><a href="sermons.html">Sermons</a></li><li><a href="about.html">About Us</a></li></ul></div>
+      <div class="footer-col"><h5>Ministries</h5><ul><li><a href="ministries.html">Children's Ministry</a></li><li><a href="ministries.html">Youth Ministry</a></li><li><a href="ministries.html">Women's Ministry</a></li><li><a href="ministries.html">Men's Fellowship</a></li></ul></div>
+      <div class="footer-col"><h5>Resources</h5><ul><li><a href="connect.html">Contact Us</a></li><li><a href="connect.html">Prayer Requests</a></li><li><a href="https://icanj.churchcenter.com/giving" target="_blank">Give Online</a></li><li><a href="events.html">VBS 2026</a></li></ul></div>
+    </div>
+  </div>
+  <div class="footer-lower">
+    <p>© 2026 India Christian Assembly of New Jersey. All Rights Reserved.</p>
+    <p>Soli Deo Gloria</p>
+  </div>
+</footer>
+
+<script>
+function toggleMobileNav() {
+  const nav = document.getElementById('mobileNav');
+  const btn = document.getElementById('menuToggle');
+  const isOpen = nav.classList.contains('open');
+  if (isOpen) { closeMobileNav(); } else { openMobileNav(); }
+}
+function openMobileNav() {
+  document.getElementById('mobileNav').classList.add('open');
+  document.getElementById('menuToggle').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileNav() {
+  document.getElementById('mobileNav').classList.remove('open');
+  document.getElementById('menuToggle').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMobileNav(); });
+</script>
+</body>
+</html>

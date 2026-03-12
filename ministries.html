@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Ministries – ICANJ</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.ministry-block { display:grid; grid-template-columns:240px 1fr; border:1px solid var(--border-light); margin-bottom:-1px; transition:background 0.22s; }
+.ministry-block:hover { background:var(--parchment); }
+.ministry-block:hover .mb-label { background:var(--cream); }
+.mb-label { padding:44px 32px; border-right:1px solid var(--border-light); display:flex; flex-direction:column; justify-content:center; background:var(--parchment); transition:background 0.22s; }
+.mb-num { font-family:'EB Garamond',serif; font-size:56px; font-weight:400; color:rgba(15,14,12,0.05); line-height:1; margin-bottom:8px; }
+.mb-title { font-family:'EB Garamond',serif; font-size:22px; font-weight:500; color:var(--ink); margin-bottom:6px; }
+.mb-when { font-family:'Raleway',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--blue); }
+.mb-content { padding:40px 44px; display:flex; flex-direction:column; justify-content:center; }
+.mb-body { font-size:15px; font-weight:400; color:var(--ash); line-height:1.85; max-width:560px; margin-bottom:14px; }
+.mb-meta { font-family:'Raleway',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.1em; color:var(--silver); }
+
+.vbs-block {
+  background:var(--cathedral); border:1px solid rgba(0,173,239,0.18);
+  padding:56px 52px; display:grid; grid-template-columns:1fr auto; gap:40px; align-items:center; margin-top:48px;
+}
+.vbs-eyebrow { font-family:'Raleway',sans-serif; font-size:10.5px; font-weight:700; letter-spacing:0.28em; text-transform:uppercase; color:var(--blue); margin-bottom:14px; }
+.vbs-title { font-family:'EB Garamond',serif; font-size:clamp(28px,4vw,48px); font-weight:400; color:var(--parchment); margin-bottom:12px; line-height:1.12; }
+.vbs-body { font-family:'Libre Baskerville',serif; font-size:16px; font-style:italic; color:rgba(242,237,228,0.48); line-height:1.75; }
+.vbs-actions { display:flex; flex-direction:column; gap:12px; flex-shrink:0; }
+
+@media(max-width:1024px){
+  .ministry-block { grid-template-columns:1fr; }
+  .mb-label { border-right:none; border-bottom:1px solid var(--border-light); padding:32px 16px; }
+  .mb-content { padding:28px 20px; }
+  .vbs-block { grid-template-columns:1fr; padding:36px 16px; }
+  .vbs-actions { flex-direction:column; }
+}
+@media(max-width:480px){
+  .mb-label { padding:24px 12px; }
+  .mb-content { padding:24px 12px; }
+  .mb-num { font-size:40px; }
+  .vbs-block { padding:28px 12px; }
+}
+</style>
+</head>
+<body>
+<script src="header.js"></script>
+
+<div class="page-masthead" style="background:var(--vesper);">
+  <div class="container"><div class="eyebrow">Serving Together</div><h1>Ministries</h1><p>There is a place for every person at ICANJ. Find yours.</p></div>
+</div>
+
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div class="eyebrow">Active Ministries</div>
+    <h2 class="section-title" style="margin-bottom:40px;">Where You Belong</h2>
+    <div class="ministry-block"><div class="mb-label"><div class="mb-num">01</div><div class="mb-title">Children's Ministry</div><div class="mb-when">Every Sunday</div></div><div class="mb-content"><p class="mb-body">A safe, supervised, and faith-filled environment for children during the Sunday 10 AM service. Kids encounter Jesus through interactive lessons, age-appropriate worship, crafts, and Scripture memory.</p><div class="mb-meta">Sunday · 10:00 AM · Main Campus</div></div></div>
+    <div class="ministry-block"><div class="mb-label"><div class="mb-num">02</div><div class="mb-title">Youth Ministry</div><div class="mb-when">Friday Evenings</div></div><div class="mb-content"><p class="mb-body">Teens and young adults grow in faith through dynamic teaching, transparent fellowship, and honest conversations about navigating life as a follower of Jesus in the modern world.</p><div class="mb-meta">Friday · 7:00 PM · Youth Room</div></div></div>
+    <div class="ministry-block"><div class="mb-label"><div class="mb-num">03</div><div class="mb-title">Worship Team</div><div class="mb-when">Saturday Rehearsals</div></div><div class="mb-content"><p class="mb-body">Musicians, vocalists, and technicians who lead our congregation into the presence of God each week. If you have musical gifts and a heart for worship, we would love to hear from you.</p><div class="mb-meta">Rehearsal: Saturday · Service: Sunday</div></div></div>
+    <div class="ministry-block"><div class="mb-label"><div class="mb-num">04</div><div class="mb-title">Women's Ministry</div><div class="mb-when">Monthly Gatherings</div></div><div class="mb-content"><p class="mb-body">A vibrant sisterhood encouraging one another through Bible study, prayer, and authentic fellowship. Monthly meetings create space for women to grow in faith and support one another through every season of life.</p><div class="mb-meta">Monthly · Dates Announced on Church Center</div></div></div>
+    <div class="ministry-block"><div class="mb-label"><div class="mb-num">05</div><div class="mb-title">Men's Fellowship</div><div class="mb-when">Monthly Breakfast</div></div><div class="mb-content"><p class="mb-body">Men gathering to sharpen one another in godliness, pray together, and hold each other accountable — over a table, in real conversation, with no pretence or performance.</p><div class="mb-meta">Monthly Breakfast · Dates on Church Center</div></div></div>
+    <div class="ministry-block"><div class="mb-label"><div class="mb-num">06</div><div class="mb-title">Outreach &amp; Missions</div><div class="mb-when">Year-Round</div></div><div class="mb-content"><p class="mb-body">Local community service and global mission support. We believe the Church exists for those who are not yet part of it. If you have a heart for the lost and the hurting, join our outreach team.</p><div class="mb-meta">Year-Round · Various Events</div></div></div>
+
+    <!-- VBS SPOTLIGHT -->
+    <div class="vbs-block">
+      <div>
+        <div class="vbs-eyebrow">Featured Event 2026</div>
+        <div class="vbs-title">Vacation Bible School<br/>July 9 – 11, 2026</div>
+        <p class="vbs-body">Three days of faith, fun, and learning for children ages 4–12. VBS is one of ICANJ's most anticipated events each year — bringing the whole community together around our children.</p>
+      </div>
+      <div class="vbs-actions">
+        <a href="connect.html" class="btn btn-blue btn-arrow">Register Now</a>
+        <a href="events.html" class="btn btn-ghost-light">Full Details</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="verse-band">
+  <blockquote><p>"Each of you should use whatever gift you have received to serve others,<br/>as faithful stewards of God's grace in its various forms."</p><cite>1 Peter 4 : 10</cite></blockquote>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-upper">
+    <div>
+      <img src="https://icanj.org/wp-content/uploads/2022/09/LOGO-transparent3_white.png" style="height:46px;opacity:0.65;" alt="ICANJ" onerror="this.style.display='none'"/>
+      <p class="footer-brand-verse">"A bruised reed he will not break, and a smouldering wick he will not snuff out." — Isaiah 42:3</p>
+      <div class="footer-social"><a href="https://www.facebook.com/ICANJ/" target="_blank" class="fsoc-btn">FB</a><a href="https://www.instagram.com/ica.nj/" target="_blank" class="fsoc-btn">IG</a><a href="https://www.youtube.com/@ICANJ" target="_blank" class="fsoc-btn">YT</a></div>
+    </div>
+    <div class="footer-nav-cols">
+      <div class="footer-col"><h5>Navigate</h5><ul><li><a href="index.html">Home</a></li><li><a href="visit.html">Plan Your Visit</a></li><li><a href="sermons.html">Sermons</a></li><li><a href="about.html">About Us</a></li></ul></div>
+      <div class="footer-col"><h5>Ministries</h5><ul><li><a href="ministries.html">Children's Ministry</a></li><li><a href="ministries.html">Youth Ministry</a></li><li><a href="ministries.html">Women's Ministry</a></li><li><a href="ministries.html">Men's Fellowship</a></li></ul></div>
+      <div class="footer-col"><h5>Resources</h5><ul><li><a href="connect.html">Contact Us</a></li><li><a href="connect.html">Prayer Requests</a></li><li><a href="https://icanj.churchcenter.com/giving" target="_blank">Give Online</a></li><li><a href="events.html">VBS 2026</a></li></ul></div>
+    </div>
+  </div>
+  <div class="footer-lower"><p>© 2026 India Christian Assembly of New Jersey. All Rights Reserved.</p><p>Soli Deo Gloria</p></div>
+</footer>
+<script>
+function toggleMobileNav() {
+  const nav = document.getElementById('mobileNav');
+  const btn = document.getElementById('menuToggle');
+  const isOpen = nav.classList.contains('open');
+  if (isOpen) { closeMobileNav(); } else { openMobileNav(); }
+}
+function openMobileNav() {
+  document.getElementById('mobileNav').classList.add('open');
+  document.getElementById('menuToggle').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileNav() {
+  document.getElementById('mobileNav').classList.remove('open');
+  document.getElementById('menuToggle').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMobileNav(); });
+</script>
+</body>
+</html>
