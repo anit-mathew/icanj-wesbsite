@@ -68,3 +68,20 @@
   // Insert before the first element after <body>
   document.currentScript.insertAdjacentHTML('afterend', html);
 })();
+
+function toggleMobileNav() {
+  const nav = document.getElementById('mobileNav');
+  const isOpen = nav.classList.contains('open');
+  if (isOpen) { closeMobileNav(); } else { openMobileNav(); }
+}
+function openMobileNav() {
+  document.getElementById('mobileNav').classList.add('open');
+  document.getElementById('menuToggle').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileNav() {
+  document.getElementById('mobileNav').classList.remove('open');
+  document.getElementById('menuToggle').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMobileNav(); });
