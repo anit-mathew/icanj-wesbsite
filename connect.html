@@ -158,10 +158,170 @@
   <blockquote><p>"Draw near to God, and he will draw near to you."</p><cite>James 4 : 8</cite></blockquote>
 </div>
 
+<script src="footer.js"></script>E html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Connect – ICANJ</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.connect-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-top:52px; }
+.form-panel { background:#fff; border:1px solid var(--border-light); padding:40px; }
+.form-eyebrow { font-family:'Raleway',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.28em; text-transform:uppercase; color:var(--blue); margin-bottom:10px; }
+.form-panel h3 { font-family:'EB Garamond',serif; font-size:28px; font-weight:500; color:var(--ink); margin-bottom:6px; }
+.form-panel .fp-sub { font-family:'Libre Baskerville',serif; font-size:14px; font-style:italic; color:var(--silver); margin-bottom:28px; line-height:1.65; }
+.field { margin-bottom:20px; }
+.field label { display:block; font-family:'Raleway',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--silver); margin-bottom:8px; }
+.field input, .field textarea, .field select {
+  width:100%; padding:12px 16px;
+  border:1px solid var(--border-light); background:var(--cream);
+  font-size:15px; font-family:'EB Garamond',serif; font-weight:400; color:var(--ink);
+  outline:none; transition:border-color 0.2s; -webkit-appearance:none;
+}
+.field input:focus, .field textarea:focus, .field select:focus { border-color:var(--blue); background:#fff; }
+.field textarea { height:116px; resize:vertical; }
+.field select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%235c5955' d='M5 6L0 0h10z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 16px center; }
+.field-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+
+.right-stack { display:flex; flex-direction:column; gap:24px; }
+
+.info-band { background:var(--parchment); padding:80px 52px; }
+.info-grid { display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--border-light); margin-top:48px; }
+.info-cell { padding:32px 28px; border-right:1px solid var(--border-light); transition:background 0.22s; }
+.info-cell:last-child { border-right:none; }
+.info-cell:hover { background:var(--cream); }
+.ic-key { font-family:'Raleway',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--blue); margin-bottom:10px; }
+.ic-val { font-family:'EB Garamond',serif; font-size:19px; font-weight:400; color:var(--ink); line-height:1.5; }
+
+.social-band { background:var(--cream); padding:80px 52px; }
+.social-row { display:grid; grid-template-columns:repeat(3,1fr); border:1px solid var(--border-light); margin-top:48px; }
+.soc-tile { padding:36px; border-right:1px solid var(--border-light); cursor:pointer; transition:background 0.22s; display:flex; align-items:center; justify-content:space-between; }
+.soc-tile:last-child { border-right:none; }
+.soc-tile:hover { background:var(--parchment); }
+.soc-tile:hover .soc-arrow { color:var(--blue); transform:translateX(4px); }
+.soc-platform { font-family:'EB Garamond',serif; font-size:22px; font-weight:500; color:var(--ink); margin-bottom:4px; }
+.soc-handle { font-size:13px; font-weight:400; color:var(--silver); }
+.soc-arrow { font-family:'EB Garamond',serif; font-size:26px; color:rgba(15,14,12,0.14); transition:all 0.25s; }
+
+@media(max-width:1024px){
+  .connect-grid { grid-template-columns:1fr; gap:24px; }
+  .info-grid { grid-template-columns:1fr 1fr; }
+  .info-cell:nth-child(2n) { border-right:none; }
+  .info-cell:nth-child(n+3) { border-top:1px solid var(--border-light); }
+  .social-row { grid-template-columns:1fr; }
+  .soc-tile { border-right:none; border-bottom:1px solid var(--border-light); }
+  .soc-tile:last-child { border-bottom:none; }
+  .field-row { grid-template-columns:1fr; }
+  .info-band, .social-band { padding:52px 16px; }
+  .form-panel { padding:28px 20px; }
+}
+@media(max-width:480px){
+  .info-grid { grid-template-columns:1fr; }
+  .info-cell { border-right:none; }
+  .info-cell:nth-child(2n) { border-right:none; }
+  .info-cell:nth-child(n+2) { border-top:1px solid var(--border-light); }
+  .info-band, .social-band { padding:40px 12px; }
+  .form-panel { padding:24px 16px; }
+}
+</style>
+</head>
+<body>
+<script src="header.js"></script>
+
+<div class="page-masthead" style="background:var(--vesper);">
+  <div class="container"><div class="eyebrow">Reach Out</div><h1>Connect With Us</h1><p>Whether you are new, curious, or ready to serve — we would love to hear from you.</p></div>
+</div>
+
+<!-- FORMS -->
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div class="eyebrow">Get in Touch</div>
+    <h2 class="section-title">How Can We Help?</h2>
+    <div class="connect-grid">
+
+      <!-- VISITOR FORM -->
+      <div class="form-panel">
+        <div class="form-eyebrow">New Here</div>
+        <h3>First-Time Visitor</h3>
+        <p class="fp-sub">Fill out your details and we will reach out to welcome you personally before your first Sunday.</p>
+        <div class="field-row">
+          <div class="field"><label>First Name</label><input type="text" placeholder="First name"/></div>
+          <div class="field"><label>Last Name</label><input type="text" placeholder="Last name"/></div>
+        </div>
+        <div class="field"><label>Email Address</label><input type="email" placeholder="your@email.com"/></div>
+        <div class="field"><label>Phone (Optional)</label><input type="tel" placeholder="(123) 456-7890"/></div>
+        <div class="field"><label>How did you hear about us?</label>
+          <select><option value="">Please select…</option><option>Friend or Family</option><option>Google Search</option><option>Social Media</option><option>Drove Past</option><option>Other</option></select>
+        </div>
+        <div class="field"><label>Anything you'd like us to know?</label><textarea placeholder="Questions, prayer requests, or just a hello…"></textarea></div>
+        <button class="btn btn-dark btn-arrow" style="width:100%;justify-content:center;">Send My Connect Card</button>
+      </div>
+
+      <!-- RIGHT STACK -->
+      <div class="right-stack">
+
+        <!-- PRAYER REQUEST -->
+        <div class="form-panel">
+          <div class="form-eyebrow">Prayer</div>
+          <h3>Prayer Request</h3>
+          <p class="fp-sub">Our pastoral team prays over every request submitted here. Nothing shared is too small or too large.</p>
+          <div class="field"><label>Your Name (Optional)</label><input type="text" placeholder="First name"/></div>
+          <div class="field"><label>Your Request</label><textarea placeholder="Share what is on your heart…"></textarea></div>
+          <button class="btn btn-blue" style="width:100%;justify-content:center;">Submit Prayer Request</button>
+        </div>
+
+        <!-- VOLUNTEER -->
+        <div class="form-panel">
+          <div class="form-eyebrow">Serve</div>
+          <h3>Volunteer Sign-Up</h3>
+          <p class="fp-sub">There is a place for you at ICANJ — tell us where you feel called to serve.</p>
+          <div class="field"><label>Name &amp; Email</label><input type="text" placeholder="Name and email address"/></div>
+          <div class="field"><label>Area of Interest</label>
+            <select><option value="">Please select…</option><option>Children's Ministry</option><option>Youth Ministry</option><option>Worship Team</option><option>Hospitality &amp; Greeting</option><option>Outreach &amp; Missions</option><option>Media &amp; Technology</option><option>Other</option></select>
+          </div>
+          <button class="btn btn-dark btn-arrow" style="width:100%;justify-content:center;">I Want to Serve</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT INFO -->
+<div class="info-band">
+  <div class="container">
+    <div class="eyebrow">Contact Information</div>
+    <h2 class="section-title">Find Us</h2>
+    <div class="info-grid">
+      <div class="info-cell"><div class="ic-key">Address</div><div class="ic-val">Hackensack, NJ<br/>New Jersey, USA</div></div>
+      <div class="info-cell"><div class="ic-key">Email</div><div class="ic-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="86efe8e0e9c6efe5e7e8eca8e9f4e1">[email&#160;protected]</a></div></div>
+      <div class="info-cell"><div class="ic-key">Office Hours</div><div class="ic-val">Monday – Friday<br/>9:00 AM – 5:00 PM</div></div>
+      <div class="info-cell"><div class="ic-key">Pastoral Care</div><div class="ic-val">For urgent needs,<br/>please email us directly</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SOCIAL -->
+<div class="social-band">
+  <div class="container">
+    <div class="eyebrow">Follow Along</div>
+    <h2 class="section-title">Find Us Online</h2>
+    <div class="social-row">
+      <a href="https://www.facebook.com/ICANJ/" target="_blank" class="soc-tile"><div><div class="soc-platform">Facebook</div><div class="soc-handle">@ICANJ</div></div><span class="soc-arrow">→</span></a>
+      <a href="https://www.instagram.com/ica.nj/" target="_blank" class="soc-tile"><div><div class="soc-platform">Instagram</div><div class="soc-handle">@ica.nj</div></div><span class="soc-arrow">→</span></a>
+      <a href="https://www.youtube.com/@ICANJ" target="_blank" class="soc-tile"><div><div class="soc-platform">YouTube</div><div class="soc-handle">@ICANJ</div></div><span class="soc-arrow">→</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="verse-band">
+  <blockquote><p>"Draw near to God, and he will draw near to you."</p><cite>James 4 : 8</cite></blockquote>
+</div>
+
 <footer class="site-footer">
   <div class="footer-upper">
     <div>
-      <img src="https://icanj.org/wp-content/uploads/2022/09/LOGO-transparent3_white.png" style="height:46px;opacity:0.65;" alt="ICANJ" onerror="this.style.display='none'"/>
+      <img src="LOGO_transparent2.png" style="height:52px;mix-blend-mode:lighten;opacity:0.85;" alt="ICANJ" onerror="this.style.display='none'"/>
       <p class="footer-brand-verse">"A bruised reed he will not break, and a smouldering wick he will not snuff out." — Isaiah 42:3</p>
       <div class="footer-social"><a href="https://www.facebook.com/ICANJ/" target="_blank" class="fsoc-btn">FB</a><a href="https://www.instagram.com/ica.nj/" target="_blank" class="fsoc-btn">IG</a><a href="https://www.youtube.com/@ICANJ" target="_blank" class="fsoc-btn">YT</a></div>
     </div>
